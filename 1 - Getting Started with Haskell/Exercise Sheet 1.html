@@ -1,0 +1,135 @@
+<!--?xml version="1.0" encoding="iso-8859-1"?-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Programming III ( COMP2209)</title>
+  <link href="Exercise%20Sheet%201_files/progiii.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div class="header">
+<h1>Programming III ( COMP 2209 )</h1>
+<h1>Semester One, 2018</h1>
+<home><a href="https://secure.ecs.soton.ac.uk/notes/comp2209/18-19/index.html">Home</a></home>
+</div>
+
+<div class="notes">
+
+<h2>Exercise Sheet One: Getting Started with Haskell</h2>
+
+<p>
+The aim of this tutorial is to introduce you to the Haskell language. 
+By the end of the class you should have a basic understanding of GHCi the Haskell interactive interpreter 
+and you should have written at least one simple Haskell script.
+</p>
+
+<p>
+Attempt the exercsise in your own time before Tuesday's lab and use that
+ session for obtaining feedback and for asking questions related to the 
+exercises.
+</p>
+
+<p>
+If you have not yet installed Haskell on your own machine then you could visit <a href="https://www.haskell.org/platform/">Haskell Platform</a> and do so. Alternatively you may use installation on the lab machines.
+</p>
+
+<exno>Exercise One</exno>
+
+<p>
+The function
+</p><blockquote>
+<tt>double x = x + x</tt>
+</blockquote>
+takes a number and returns twice its argument.  To expand an expression <tt>double E</tt>, rewrite it with the right hand side of the function definition but with <tt>x</tt> replaced by the expression <tt>E</tt>.  For example <tt>double 10</tt> could be expanded by replacing <tt>x</tt> in the definition above with <tt>10</tt> to get <tt>10 + 10</tt>.  Write down an evaluation of the expression <tt>double (double 2)</tt> by repeatedly expanding the definition of <tt>double</tt> and <tt>+</tt>. You may assume that <tt>+</tt> behaves as expected.  Is there more than one way of doing this? Is one way more efficient than the other?
+<p></p>
+
+
+<exno>Exercise Two</exno>
+
+<p>
+The function 
+</p><blockquote>
+  <tt>
+<pre>sum [] = 0
+sum (x:xs) = x + sum xs
+</pre>
+  </tt>
+</blockquote>
+takes a list of numbers and returns the total of adding all numbers in the list.  This says, in the case of an empty list <tt>[]</tt> the value returned should be 0.  For lists that comprise some element <tt>x</tt> followed by another (possibly empty) list <tt>xs</tt> the return value should be <tt>x</tt> added to the recursively evaluated sum on <tt>xs</tt>.  
+
+By expanding the above definition show that <tt>sum [x] = x</tt> for any <tt>x</tt>. That is, summing the elements of the singleton list containing just <tt>x</tt> will return that value. 
+<p></p>
+
+<exno>Exercise Three</exno>
+
+<p>
+Define a function <tt>product</tt> that produces the product of a list of numbers. Test your definition on a few examples.
+</p>
+
+
+<exno>Exercise Four</exno>
+<p>
+Recall the definition of Quicksort from the lecture:
+</p><blockquote>
+	<tt>
+<pre>quicksort [] = []
+quicksort (x:xs) = quicksort ls ++ [x] ++ quicksort rs
+                   where 
+                     ls = [ a | a &lt;- xs , a &lt;= x ]
+                     rs = [ a | a &lt;- xs , a &gt; x ]
+ 	    </pre>
+	</tt>
+</blockquote>
+Modify this definition to create a function <tt>quicktros</tt> that produces a sorted version of the argument list in descending order.
+<p></p>
+
+<exno>Exercise Five</exno>
+<p>
+Suppose the definition of <tt>quicksort</tt> above used <tt> &lt; </tt> instead of <tt> &lt;= </tt> when defining <tt>ls</tt>.  What would the effect of this be?  See if you can work this out and then modify the code and test it on a few examples.
+</p>
+
+
+<exno>Exercise Six</exno>
+
+<p>
+	Evaluate each of the following expressions in GHCi and then repeat each
+ one by adding explicit parentheses in place of the implicit 
+parentheses.  Make sure the expressions evaluate to the same value in 
+each case.
+
+</p><ul>
+	<li><tt>2^3*4</tt></li>
+    <li><tt>2*3+4*5</tt></li>
+    <li><tt>2+3*4^5</tt></li>
+    <li><tt>2^2+2^2</tt></li>
+</ul>
+<p></p>
+
+<exno>Exercise Seven</exno>
+<p>
+The following script contains at least three syntactic errors. Copy the 
+code in to a script, correct all errors and check that your solution 
+loads correctly using GHCi.
+</p><blockquote>
+	<tt>
+<pre>	N = a 'div' length xs
+	    where 
+	       a = 10 
+	      xs = [1,2,3,4,5]
+</pre>
+	</tt>
+</blockquote>
+<p></p>
+
+<exno>Exercise Eight</exno>
+<p>
+The libary function <tt>last</tt> selects the last element of a non-empty list; for example <tt>last [1,2,3,4,5] = 5</tt>. Show how the function <tt>last</tt> could be defined in terms of the other libary functions given in the lecture in at least two distinct ways.
+</p>
+
+</div><div class="footer">
+Page maintained by Julian Rathke.
+</div>
+ 
+
+</body></html>
