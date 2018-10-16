@@ -1,0 +1,3 @@
+--There is no need to check if two functions are equal
+-- It would also be inefficient to check these as there can
+-- be potentially infinite elements in the domain at a
