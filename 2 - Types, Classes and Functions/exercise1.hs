@@ -1,0 +1,10 @@
+-- ['a', 'b' 'c'] :: [Char]
+-- ('a', 'b', 'c') :: (Char, Char, Char)
+-- ['a', 3, True] :: Not a type
+-- ('a', 3, True) :: (Char, Int, Bool)   - Compiler returns "Num b => (Char, b, Bool)"
+-- [(False, '0'), [True, '1']] :: Not a type
+-- ([True, False], ['0', '1']) :: ([Bool], [Char])
+-- [tail, init, reverse] :: [[a] -> [a]]
+-- [] :: [a]
+-- 2 : 3 : [] : 4 : 5 : [] :: Num [a] => [[a]]
+-- [] : [] :: [[a]]
