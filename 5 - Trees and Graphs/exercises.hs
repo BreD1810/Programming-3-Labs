@@ -37,3 +37,29 @@ testExpr = Val 1
 testExpr2 = Add (Val 1) (Val 2)
 testExpr3 = Sub (Val 2) (Val 1)
 testExpr4 = Add (Val 1) (Sub (Val 2) (Val 1))
+
+-- Exercise 4
+data Prop = Const Bool | Var Char | Not Prop | And Prop Prop | Imply Prop Prop
+
+data Form = Positive | Negative | Mixed deriving Show
+
+getForm :: Prop -> Form
+getForm (Const _) = Positive
+getForm (Var _) = Positive
+getForm (Not p) = negateForm (getForm p)
+getForm (And p q) = andForm (getForm p) (getForm q)
+getForm (Imply p q) = andForm (negateForm (getForm p)) (getForm q)
+
+negateForm :: Form -> Form
+negateForm Positive = Negative
+negateForm Negative = Positive
+negateForm Mixed = Mixed
+
+andForm :: Form -> Form -> Form
+andForm Positive Positive = Positive
+andForm Negative Negative = Negative
+andform _ _ = Mixed
+
+testProp = Var 'x'
+testProp2 = Not (Var 'x')
+testProp3 = Imply (Not (Var 'x')) (Const True)
