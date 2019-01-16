@@ -18,3 +18,22 @@ foldTree leaff nodef (Node left x right) = nodef x (foldTree leaff nodef left) (
 
 flatten :: Tree a -> [a]
 flatten = foldTree (\x -> [x]) (\x ls rs -> ls ++ (x:rs))
+
+-- Exercise 3
+data Expr = Val Int | Add Expr Expr | Sub Expr Expr
+
+foldExpr :: (Int -> b) -> (b -> b -> b) -> (b -> b -> b) -> Expr -> b
+foldExpr valFunc addFunc subFunc (Val x) = valFunc x
+foldExpr valFunc addFunc subFunc (Add e1 e2) = addFunc (foldExpr valFunc addFunc subFunc e1) (foldExpr valFunc addFunc subFunc e2)
+foldExpr valFunc addFunc subFunc (Sub e1 e2) = subFunc (foldExpr valFunc addFunc subFunc e1) (foldExpr valFunc addFunc subFunc e2)
+
+eval :: Expr -> Int
+eval = foldExpr (\x -> x) (\x y -> x + y) (\x y -> x - y) 
+
+size :: Expr -> Int
+size = foldExpr (\x -> 1) (\x y -> x + y + 1) (\x y -> x + y + 1)
+
+testExpr = Val 1
+testExpr2 = Add (Val 1) (Val 2)
+testExpr3 = Sub (Val 2) (Val 1)
+testExpr4 = Add (Val 1) (Sub (Val 2) (Val 1))
